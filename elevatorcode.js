@@ -12,13 +12,18 @@ function elevator()
 			{
 				if (parseInt(this.mainarray[0]) < parseInt(newfloor))
 				{
-					this.sparearray.push(parseInt(newfloor));
+					if (this.sparearray.indexOf(newfloor) == -1)
+					{
+						this.sparearray.push(parseInt(newfloor));					
+					}
 				}
 				else
 				{
+					if (this.mainarray.indexOf(newfloor) == -1)
+					{
 					this.mainarray.push(parseInt(newfloor));
-					this.mainarray.sort(function(a,b){return b - a});
-					//this.mainarray.reverse();
+					this.mainarray.sort(function(a,b){return b - a});					
+					}
 				};
 			}
 			else
@@ -26,13 +31,18 @@ function elevator()
 			{
 				if (parseInt(this.mainarray[0]) <= parseInt(newfloor))
 				{
+					if (this.mainarray.indexOf(newfloor) == -1)
+					{
 					this.mainarray.push(parseInt(newfloor));
-					this.mainarray.sort(function(a,b){return a - b});
-					
+					this.mainarray.sort(function(a,b){return a - b});					
+					}					
 				}
 				else
 				{
-					this.sparearray.push(parseInt(newfloor));
+					if (this.sparearray.indexOf(newfloor) == -1)
+					{
+					this.sparearray.push(parseInt(newfloor));					
+					}
 				};
 			};
 		}
