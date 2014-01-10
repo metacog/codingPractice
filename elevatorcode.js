@@ -154,21 +154,25 @@ firstelevator.start(firstelevator);
 
 
 
-function setfloorandtime(floormin,floormax,timemin,timemax, elevator)
+function setfloorandtime(floormin,floormax,timemin,timemax, elevator, runtimes)
 {
-	var floorvar = function getRandomInt (floormin, floormax) {
-		return Math.floor(Math.random() * (floormax - floormin + 1)) + floormin;
+	if (runtimes > 0)
+	{
+		runtimes= runtimes - 1;
+		var floorvar = function getRandomInt (floormin, floormax) {
+			return Math.floor(Math.random() * (floormax - floormin + 1)) + floormin;
+		}
+		elevator.addfloor(floorvar(floormin,floormax));
+		console.log(firstelevator.mainarray);
+		console.log(firstelevator.sparearray);
+		var timevar = function getRandomTime (timemin, timemax) {
+			var timevar =  Math.floor(Math.random() * (timemax - timemin + 1)) + timemin;
+		return timevar * 1000;
+		}
+		setTimeout(function() { setfloorandtime(floormin,floormax,timemin,timemax,elevator); }, timevar(timemin,timemax));
 	}
-	elevator.addfloor(floorvar(floormin,floormax));
-	console.log(firstelevator.mainarray);
-	console.log(firstelevator.sparearray);
-	var timevar = function getRandomTime (timemin, timemax) {
-		var timevar =  Math.floor(Math.random() * (timemax - timemin + 1)) + timemin;
-	return timevar * 1000;
-	}
-	setTimeout(function() { setfloorandtime(floormin,floormax,timemin,timemax,elevator); }, timevar(timemin,timemax));
 }
-setTimeout(function() { setfloorandtime(1,30,.5,1,firstelevator); }, 1000);
+setTimeout(function() { setfloorandtime(1,30,.5,1,firstelevator,50); }, 1000);
 
 
 
