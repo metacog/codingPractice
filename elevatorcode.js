@@ -169,7 +169,7 @@ function setfloorandtime(floormin,floormax,timemin,timemax, elevator, runtimes)
 			var timevar =  Math.floor(Math.random() * (timemax - timemin + 1)) + timemin;
 		return timevar * 1000;
 		}
-		setTimeout(function() { setfloorandtime(floormin,floormax,timemin,timemax,elevator); }, timevar(timemin,timemax));
+		setTimeout(function() { setfloorandtime(floormin,floormax,timemin,timemax,elevator, runtimes); }, timevar(timemin,timemax));
 	}
 }
 setTimeout(function() { setfloorandtime(1,30,.5,1,firstelevator,50); }, 1000);
